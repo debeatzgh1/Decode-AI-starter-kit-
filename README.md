@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -117,7 +118,7 @@ iframe{width:100%;height:100%;border:none}
         Deep-dive AI articles, real-world use cases, and step-by-step learning
         resources.
       </p>
-      <button onclick="openPreview('https://debeatzgh.wordpress.com/build-with-ai-2/')"
+      <button onclick="openPreview('https://debeatzgh.wordpress.com/build-with-ai-2/', true)"
         class="w-full px-4 py-3 rounded-xl text-white font-bold bg-blue-600">
         Open Articles
       </button>
@@ -135,7 +136,7 @@ iframe{width:100%;height:100%;border:none}
         Beginner-friendly explanations, decoding AI concepts for creators,
         students, and entrepreneurs.
       </p>
-      <button onclick="openPreview('https://debeatzgh2.blogspot.com/p/blog-page_9.html')"
+      <button onclick="openPreview('https://debeatzgh2.blogspot.com/')"
         class="w-full px-4 py-3 rounded-xl text-white font-bold bg-emerald-600">
         Read Blog
       </button>
@@ -148,6 +149,9 @@ iframe{width:100%;height:100%;border:none}
 <div class="modal-bg" id="previewModal">
   <div class="modal-box" id="previewBox">
     <div class="modal-controls">
+      <div class="ctrl-btn" id="nextBtn" style="display:none;" onclick="openNext()">
+        ➜ Next
+      </div>
       <div class="ctrl-btn" onclick="toggleFS('previewBox')">⛶ Fullscreen</div>
       <div class="ctrl-btn" onclick="closePreview()">✕ Close</div>
     </div>
@@ -163,42 +167,56 @@ iframe{width:100%;height:100%;border:none}
 <script>
 const previewModal=document.getElementById("previewModal");
 const previewFrame=document.getElementById("previewFrame");
+const nextBtn=document.getElementById("nextBtn");
 
-function openPreview(url){
+// Store current modal URL
+let currentURL='';
+
+// Open preview function
+function openPreview(url, showNext=false){
   previewFrame.src=url;
   previewModal.style.display="flex";
+  currentURL=url;
+  nextBtn.style.display=showNext ? 'block' : 'none';
 }
 
+// Close preview
 function closePreview(){
   previewModal.style.display="none";
   previewFrame.src="";
   if(document.fullscreenElement){document.exitFullscreen();}
 }
 
+// Fullscreen toggle
 function toggleFS(id){
   const el=document.getElementById(id);
   if(!document.fullscreenElement){el.requestFullscreen();}
   else{document.exitFullscreen();}
 }
 
-/* 🔍 Auto-detect ads & external links */
+// Next button logic
+function openNext(){
+  if(currentURL.includes('wordpress.com')){
+    openPreview('https://debeatzgh2.blogspot.com/');
+  }
+}
+
+/* Optional: External links open in new tab */
 previewFrame.addEventListener("load", ()=>{
   try{
     const doc=previewFrame.contentDocument;
     const links=doc.querySelectorAll("a[href]");
     links.forEach(a=>{
       const href=a.href;
-      if(
-        !href.includes("debeatzgh.wordpress.com") &&
-        !href.includes("debeatzgh2.blogspot.com") &&
-        !href.includes("msha.ke")
-      ){
+      if(!href.includes("debeatzgh.wordpress.com") &&
+         !href.includes("debeatzgh2.blogspot.com") &&
+         !href.includes("msha.ke")){
         a.setAttribute("target","_blank");
         a.setAttribute("rel","noopener");
       }
     });
   }catch(e){
-    console.warn("Cross-domain content: ad handling limited");
+    console.warn("Cross-domain content: external links may not be detected");
   }
 });
 </script>
