@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       text: "💡 Ideas",
       bg: "#c026d3",
-      url: "https://debeatzgh.wordpress.com/"
+      url: "https://msha.ke/debeatzgh"
     }
   ];
 
