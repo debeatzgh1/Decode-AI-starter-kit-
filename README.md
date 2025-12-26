@@ -201,13 +201,13 @@ body{
       <span class="badge">GUIDE</span>
       <img src="https://source.unsplash.com/featured/?sidehustle,work" alt="">
       <div class="card-body">
-        <h3>Side Hustle Starter Kit</h3>
+        <h3>Decode AI blog</h3>
         <p>
-          A beginner-friendly roadmap with practical side-hustle ideas,
-          AI-powered tools, and digital income strategies.
+          A beginner-friendly roadmap with practical Ai ideas,
+          AI-powered tools, and digital Assets strategies.
         </p>
         <div class="actions">
-          <a href="https://debeatzgh1.github.io/Side-hustle-starter-kit-/" class="btn primary">View Kit</a>
+          <a href="https://debeatzgh.wordpress.com/build-with-ai-2/" class="btn primary">Read Blog</a>
           <a href="https://debeatzgh1.github.io/Side-hustle-starter-kit-/" class="btn outline">Get Started</a>
         </div>
       </div>
