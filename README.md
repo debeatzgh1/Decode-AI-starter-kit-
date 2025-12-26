@@ -133,7 +133,7 @@ body{
 
 <!-- HERO -->
 <section class="hero">
-  <h1>DebeatzGH Digital Hub</h1>
+  <h1>Digital Hub</h1>
   <p>
     A modern digital platform built to help creators, students, entrepreneurs,
     and professionals explore AI tools, business resources, quizzes, and smart
@@ -157,7 +157,7 @@ body{
         </p>
         <div class="actions">
           <a href="https://debeatzgh2.blogspot.com/" class="btn primary">Read Articles</a>
-          <a href="https://debeatzgh2.blogspot.com/" class="btn outline">Open Blog</a>
+          <a href="https://debeatzgh.wordpress.com/build-with-ai-2/" class="btn outline">Open Blog</a>
         </div>
       </div>
     </div>
@@ -191,7 +191,7 @@ body{
         </p>
         <div class="actions">
           <a href="https://debeatzgh1.github.io/sales" class="btn primary">Explore Platform</a>
-          <a href="https://debeatzgh1.github.io/sales" class="btn outline">View Updates</a>
+          <a href="https://debeatzgh.wordpress.com/build-with-ai-2/" class="btn outline">View Updates</a>
         </div>
       </div>
     </div>
