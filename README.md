@@ -102,14 +102,14 @@ body{
   position:relative;
 }
 .modal-fullscreen .modal-content{
-  width:100%;
+  width:90%;
   height:100%;
   margin:0;
   border-radius:0;
 }
 #iframe-view{
   width:100%;
-  height:100%;
+  height:105%;
   border:none;
 }
 
