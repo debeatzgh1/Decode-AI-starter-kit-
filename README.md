@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Digital Hub</title>
+<title>Decode AI – Digital Hub</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+:root{
+  --primary:#2563eb;
+  --dark:#020617;
+  --muted:#475569;
+}
 body{
   margin:0;
   font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
@@ -17,22 +22,24 @@ body{
 .hero{
   background:linear-gradient(135deg,#020617,#0f172a);
   color:#fff;
-  padding:50px 20px;
+  padding:70px 20px;
   text-align:center;
 }
-.hero h1{font-size:2.2rem;margin-bottom:10px}
-.hero p{max-width:780px;margin:auto;opacity:.9}
+.hero h1{font-size:2.6rem;margin-bottom:12px}
+.hero p{max-width:820px;margin:auto;opacity:.9}
 
-/* ===== GRID ===== */
+/* ===== CONTAINER ===== */
 .container{
   max-width:1200px;
   margin:auto;
-  padding:40px 20px;
+  padding:50px 20px;
 }
+
+/* ===== GRID ===== */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:24px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:26px;
 }
 
 /* ===== CARD ===== */
@@ -47,49 +54,65 @@ body{
 .card:hover{transform:translateY(-6px)}
 .card img{
   width:100%;
-  height:160px;
+  height:180px;
   object-fit:cover;
 }
-.card-body{padding:22px}
+.card-body{padding:24px}
 .card-body h3{margin:0 0 10px}
-.card-body p{color:#475569;font-size:.95rem}
+.card-body p{color:var(--muted);font-size:.95rem}
 
-/* ===== BADGE ===== */
-.badge{
+/* ===== BUTTON OVERLAY ===== */
+.overlay-btn{
   position:absolute;
-  top:12px;
-  left:12px;
-  background:#2563eb;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(2,6,23,.55);
+  opacity:0;
+  transition:.3s;
+}
+.card:hover .overlay-btn{opacity:1}
+.overlay-btn span{
+  background:var(--primary);
   color:#fff;
-  font-size:11px;
-  padding:5px 10px;
-  border-radius:999px;
+  padding:12px 22px;
+  border-radius:30px;
   font-weight:700;
 }
 
-/* ===== BUTTONS ===== */
-.actions{
-  display:flex;
-  gap:12px;
-  margin-top:16px;
+/* ===== SECTION TITLE ===== */
+.section-title{
+  font-size:1.9rem;
+  margin-bottom:14px;
 }
-.btn{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  font-weight:700;
-  text-decoration:none;
-  text-align:center;
+.section-desc{
+  color:var(--muted);
+  max-width:780px;
+  margin-bottom:30px;
 }
-.primary{background:#2563eb;color:#fff}
-.outline{border:1px solid #2563eb;color:#2563eb}
+
+/* ===== POSTS ===== */
+.posts{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.post{
+  background:#fff;
+  border-radius:14px;
+  padding:18px;
+  box-shadow:0 6px 20px rgba(0,0,0,.07);
+}
+.post h4{margin:0 0 8px}
+.post p{font-size:.9rem;color:var(--muted)}
 
 /* ===== MODAL ===== */
 #iframe-modal{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.6);
+  background:rgba(0,0,0,.65);
   z-index:9999;
 }
 .modal-content{
@@ -102,19 +125,15 @@ body{
   position:relative;
 }
 .modal-fullscreen .modal-content{
-  width:90%;
+  width:100%;
   height:100%;
   margin:0;
   border-radius:0;
 }
-#iframe-view{
-  width:100%;
-  height:105%;
-  border:none;
-}
+#iframe-view{width:100%;height:100%;border:none}
 
-/* ===== MODAL CONTROLS ===== */
-.close-btn, .fs-btn{
+/* ===== CONTROLS ===== */
+.close-btn,.fs-btn{
   position:absolute;
   top:10px;
   background:rgba(0,0,0,.75);
@@ -133,90 +152,89 @@ body{
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Digital Hub</h1>
+  <h1>Decoding Artificial Intelligence</h1>
   <p>
-    A modern digital platform built to help creators, students, entrepreneurs,
-    and professionals explore AI tools, business resources, quizzes, and smart
-    online solutions — all in one connected experience.
+    A professional digital hub by DebeatzGH exploring AI concepts, real-world use cases,
+    tools, insights, and future-ready knowledge for creators, students, and entrepreneurs.
   </p>
 </section>
 
-<!-- CONTENT -->
+<!-- MAIN PLATFORMS -->
 <section class="container">
+  <h2 class="section-title">Explore the Platforms</h2>
+  <p class="section-desc">
+    Access curated AI articles, blog resources, digital tools, and creator links —
+    all connected through an immersive iframe experience.
+  </p>
+
   <div class="grid">
 
-    <!-- CARD 1 -->
-    <div class="card">
-      <span class="badge">NEW</span>
-      <img src="https://source.unsplash.com/featured/?ai,technology" alt="">
+    <!-- WORDPRESS -->
+    <div class="card" data-url="https://debeatzgh.wordpress.com/build-with-ai-2/">
+      <!-- 🔁 REPLACE IMAGE WITH YOUR WORDPRESS UPLOAD -->
+      <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995" alt="">
       <div class="card-body">
-        <h3>AI & Digital Blog</h3>
+        <h3>Build With AI (WordPress)</h3>
         <p>
-          Read practical guides on Artificial Intelligence, productivity tools,
-          digital workflows, and modern tech insights for creators.
+          In-depth articles, guides, and tutorials on building smarter systems
+          using artificial intelligence.
         </p>
-        <div class="actions">
-          <a href="https://debeatzgh2.blogspot.com/" class="btn primary">Read Articles</a>
-          <a href="https://debeatzgh.wordpress.com/build-with-ai-2/" class="btn outline">Open Blog</a>
-        </div>
       </div>
+      <div class="overlay-btn"><span>Open in Viewer</span></div>
     </div>
 
-    <!-- CARD 2 -->
-    <div class="card">
-      <span class="badge">FEATURED</span>
-      <img src="https://source.unsplash.com/featured/?business,quiz" alt="">
+    <!-- BLOGSPOT -->
+    <div class="card" data-url="https://debeatzgh2.blogspot.com/p/blog-page_9.html">
+      <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c" alt="">
       <div class="card-body">
-        <h3>Online Business Quiz</h3>
+        <h3>AI Knowledge Blog</h3>
         <p>
-          Test your business knowledge, discover strengths, and get instant feedback
-          through an interactive quiz experience.
+          Practical AI learning content, explanations, and thought leadership
+          focused on decoding complex ideas.
         </p>
-        <div class="actions">
-          <a href="https://debeatzgh1.blogspot.com/2025/12/online-business-quiz-widget.html" class="btn primary">Take Quiz</a>
-          <a href="https://debeatzgh1.blogspot.com/2025/12/online-business-quiz-widget.html" class="btn outline">Learn More</a>
-        </div>
       </div>
+      <div class="overlay-btn"><span>Read Articles</span></div>
     </div>
 
-    <!-- CARD 3 -->
-    <div class="card">
-      <span class="badge">POPULAR</span>
-      <img src="https://source.unsplash.com/featured/?startup,digital" alt="">
+    <!-- MILKSHAKE -->
+    <div class="card" data-url="https://msha.ke/debeatzgh">
+      <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984" alt="">
       <div class="card-body">
-        <h3>DebeatzGH Sales Platform</h3>
+        <h3>Creator & Tools Hub</h3>
         <p>
-          Explore AI tools, smart earning ideas, digital resources, templates,
-          and productivity solutions curated for online growth.
+          Access all DebeatzGH tools, apps, links, resources, and creator platforms
+          from one central hub.
         </p>
-        <div class="actions">
-          <a href="https://debeatzgh1.github.io/sales" class="btn primary">Explore Platform</a>
-          <a href="https://debeatzgh.wordpress.com/build-with-ai-2/" class="btn outline">View Updates</a>
-        </div>
       </div>
-    </div>
-
-    <!-- CARD 4 -->
-    <div class="card">
-      <span class="badge">GUIDE</span>
-      <img src="https://source.unsplash.com/featured/?sidehustle,work" alt="">
-      <div class="card-body">
-        <h3>Decode AI blog</h3>
-        <p>
-          A beginner-friendly roadmap with practical Ai ideas,
-          AI-powered tools, and digital Assets strategies.
-        </p>
-        <div class="actions">
-          <a href="https://debeatzgh.wordpress.com/build-with-ai-2/" class="btn primary">Read Blog</a>
-          <a href="https://debeatzgh1.github.io/Side-hustle-starter-kit-/" class="btn outline">Get Started</a>
-        </div>
-      </div>
+      <div class="overlay-btn"><span>Explore Hub</span></div>
     </div>
 
   </div>
 </section>
 
-<!-- IFRAME MODAL -->
+<!-- SAMPLE POSTS -->
+<section class="container">
+  <h2 class="section-title">Featured Topics: Decoding AI</h2>
+  <p class="section-desc">
+    Sample content designed to spark curiosity, learning, and engagement around
+    Artificial Intelligence.
+  </p>
+
+  <div class="posts">
+    <div class="post"><h4>1. What AI Really Is (Beyond the Hype)</h4><p>Understanding intelligence, algorithms, and learning systems.</p></div>
+    <div class="post"><h4>2. Machine Learning Explained Simply</h4><p>How machines learn from data without explicit programming.</p></div>
+    <div class="post"><h4>3. Neural Networks & The Human Brain</h4><p>Why deep learning mimics biological thinking.</p></div>
+    <div class="post"><h4>4. AI in Everyday Life</h4><p>From recommendations to voice assistants.</p></div>
+    <div class="post"><h4>5. AI for Content Creators</h4><p>Writing, design, video, and productivity tools.</p></div>
+    <div class="post"><h4>6. Ethics & Bias in AI</h4><p>Fairness, accountability, and responsibility.</p></div>
+    <div class="post"><h4>7. AI in Business Growth</h4><p>Automation, analytics, and smarter decisions.</p></div>
+    <div class="post"><h4>8. Prompt Engineering Basics</h4><p>How to talk to AI effectively.</p></div>
+    <div class="post"><h4>9. AI vs Human Creativity</h4><p>Collaboration, not replacement.</p></div>
+    <div class="post"><h4>10. The Future of Artificial Intelligence</h4><p>What comes next and how to prepare.</p></div>
+  </div>
+</section>
+
+<!-- MODAL -->
 <div id="iframe-modal">
   <div class="modal-content">
     <div class="fs-btn">⛶</div>
@@ -227,16 +245,13 @@ body{
 
 <script>
 const INTERNAL_DOMAINS = [
-  "blogspot.com",
   "debeatzgh.wordpress.com",
-  "debeatzgh1.github.io",
+  "blogspot.com",
   "msha.ke/debeatzgh"
 ];
 
 const modal = document.getElementById("iframe-modal");
 const iframe = document.getElementById("iframe-view");
-const fsBtn = document.querySelector(".fs-btn");
-const closeBtn = document.querySelector(".close-btn");
 
 function isInternal(url){
   return INTERNAL_DOMAINS.some(d => url.includes(d));
@@ -253,19 +268,19 @@ function closeIframe(){
   modal.classList.remove("modal-fullscreen");
 }
 
-document.querySelectorAll("a").forEach(a=>{
-  a.addEventListener("click",e=>{
-    const url = a.href;
-    if(!url) return;
-    e.preventDefault();
+document.querySelectorAll(".card").forEach(card=>{
+  card.addEventListener("click",()=>{
+    const url = card.dataset.url;
     isInternal(url)
       ? openIframe(url)
       : window.open(url,"_blank","noopener,noreferrer");
   });
 });
 
-fsBtn.onclick = () => modal.classList.toggle("modal-fullscreen");
-closeBtn.onclick = closeIframe;
+document.querySelector(".fs-btn").onclick =
+  ()=> modal.classList.toggle("modal-fullscreen");
+
+document.querySelector(".close-btn").onclick = closeIframe;
 modal.onclick = e => { if(e.target === modal) closeIframe(); };
 </script>
 
