@@ -1,95 +1,74 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Content Hub</title>
+<title>Debeatzgh Multi-Tab Launcher</title>
 
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
 
 <style>
-.carousel-container{
-  display:flex;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  gap:20px;
-  padding:20px;
-}
-.carousel-card{
-  min-width:340px;
-  background:#fff;
-  border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
-  scroll-snap-align:center;
-  overflow:hidden;
-  position:relative;
-  transition:.3s;
-}
-.carousel-card:hover{transform:translateY(-6px)}
-
-.badge{
-  position:absolute;
-  top:12px;left:12px;
-  padding:4px 12px;
-  font-size:11px;
-  font-weight:700;
-  border-radius:999px;
-  color:#fff;
-}
-.badge-featured{background:#2563eb}
-.badge-popular{background:#16a34a}
-
+/* ===== MODAL ===== */
 .modal-bg{
   display:none;
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.7);
   backdrop-filter:blur(6px);
-  justify-content:center;
-  align-items:center;
   z-index:9999;
 }
 .modal-box{
-  width:94%;
-  height:92%;
+  width:96%;
+  height:94%;
   background:#fff;
   border-radius:18px;
   overflow:hidden;
-  position:relative;
+  display:flex;
+  flex-direction:column;
 }
-iframe{width:100%;height:100%;border:none}
 
-.modal-controls{
-  position:absolute;
-  top:10px;left:10px;
+/* ===== TABS ===== */
+.tabs{
+  display:flex;
+  gap:6px;
+  padding:10px;
+  background:#0f172a;
+}
+.tab{
+  padding:8px 14px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:700;
+  color:#cbd5f5;
+  cursor:pointer;
+}
+.tab.active{
+  background:#2563eb;
+  color:#fff;
+}
+
+/* ===== CONTROLS ===== */
+.controls{
   display:flex;
   gap:8px;
-  z-index:10;
+  padding:8px 10px;
+  background:#020617;
 }
 .ctrl-btn{
-  background:rgba(0,0,0,.75);
+  background:rgba(255,255,255,.15);
   color:#fff;
-  padding:6px 10px;
+  padding:6px 12px;
   border-radius:8px;
   font-size:12px;
   font-weight:700;
   cursor:pointer;
 }
 
-/* Floating Milkshake Button */
-.floating-btn{
-  position:fixed;
-  bottom:18px;
-  right:18px;
-  background:#f97316;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:14px;
-  box-shadow:0 10px 25px rgba(0,0,0,.25);
-  cursor:pointer;
-  z-index:99999;
+/* ===== IFRAME ===== */
+iframe{
+  flex:1;
+  width:100%;
+  border:none;
 }
 </style>
 </head>
@@ -99,126 +78,127 @@ iframe{width:100%;height:100%;border:none}
 <header class="text-center py-10">
   <h1 class="text-3xl font-bold">AI & Knowledge Hub</h1>
   <p class="text-gray-600 mt-2 max-w-xl mx-auto">
-    Explore AI insights, tutorials, and creator resources in a focused,
-    distraction-free reading experience.
+    Open trusted platforms in one distraction-free workspace.
   </p>
 </header>
 
-<!-- CONTENT CARDS -->
-<div class="carousel-container">
+<!-- LAUNCHER CARDS -->
+<div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-6">
 
-  <!-- WORDPRESS -->
-  <div class="carousel-card">
-    <span class="badge badge-featured">Featured</span>
-    <img src="https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/designamodernminimalisticcatalogcoverthumbnailfeaturingagridoffloatingbrowserwindowsandappcardseachwithsmalliconslikebloggergithubshoppingcartchatbubbleandnewsletterenvelope6320208726725.jpg"
-         class="w-full h-44 object-cover">
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-2">Build With AI (WordPress)</h3>
-      <p class="text-sm text-gray-600 mb-4">
-        Deep-dive AI articles, real-world use cases, and step-by-step learning
-        resources.
-      </p>
-      <button onclick="openPreview('https://debeatzgh.wordpress.com/build-with-ai-2/', true)"
-        class="w-full px-4 py-3 rounded-xl text-white font-bold bg-blue-600">
-        Open Articles
-      </button>
-    </div>
+  <div class="bg-white rounded-xl shadow p-6">
+    <h3 class="text-xl font-bold mb-2">Build With AI</h3>
+    <p class="text-sm text-gray-600 mb-4">WordPress AI deep-dives & guides</p>
+    <button onclick="openLauncher('wordpress')"
+      class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold">
+      Open
+    </button>
   </div>
 
-  <!-- BLOGGER -->
-  <div class="carousel-card">
-    <span class="badge badge-popular">Popular</span>
-    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995"
-         class="w-full h-44 object-cover">
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-2">AI Knowledge Blog (Blogger)</h3>
-      <p class="text-sm text-gray-600 mb-4">
-        Beginner-friendly explanations, decoding AI concepts for creators,
-        students, and entrepreneurs.
-      </p>
-      <button onclick="openPreview('https://debeatzgh2.blogspot.com/')"
-        class="w-full px-4 py-3 rounded-xl text-white font-bold bg-emerald-600">
-        Read Blog
-      </button>
-    </div>
+  <div class="bg-white rounded-xl shadow p-6">
+    <h3 class="text-xl font-bold mb-2">AI Knowledge Blog</h3>
+    <p class="text-sm text-gray-600 mb-4">Beginner-friendly Blogger content</p>
+    <button onclick="openLauncher('blogger')"
+      class="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold">
+      Open
+    </button>
   </div>
 
 </div>
 
-<!-- PREVIEW MODAL -->
-<div class="modal-bg" id="previewModal">
-  <div class="modal-box" id="previewBox">
-    <div class="modal-controls">
-      <div class="ctrl-btn" id="nextBtn" style="display:none;" onclick="openNext()">
-        ➜ Next
-      </div>
-      <div class="ctrl-btn" onclick="toggleFS('previewBox')">⛶ Fullscreen</div>
-      <div class="ctrl-btn" onclick="closePreview()">✕ Close</div>
-    </div>
-    <iframe id="previewFrame"></iframe>
-  </div>
-</div>
+<!-- MODAL -->
+<div class="modal-bg" id="modal">
+  <div class="modal-box" id="modalBox">
 
-<!-- FLOATING MILKSHAKE -->
-<div class="floating-btn" onclick="openPreview('https://msha.ke/debeatzgh')">
-  🌐 My Links
+    <!-- TABS -->
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('wordpress')">WordPress</div>
+      <div class="tab" onclick="switchTab('blogger')">Blogger</div>
+      <div class="tab" onclick="switchTab('slides')">Slides</div>
+      <div class="tab" onclick="switchTab('forms')">Forms</div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+      <div class="ctrl-btn" onclick="goBack()">⟵ Back</div>
+      <div class="ctrl-btn" onclick="goForward()">⟶ Forward</div>
+      <div class="ctrl-btn" onclick="toggleFS()">⛶ Fullscreen</div>
+      <div class="ctrl-btn" onclick="closeLauncher()">✕ Close</div>
+    </div>
+
+    <!-- IFRAME -->
+    <iframe id="frame"></iframe>
+
+  </div>
 </div>
 
 <script>
-const previewModal=document.getElementById("previewModal");
-const previewFrame=document.getElementById("previewFrame");
-const nextBtn=document.getElementById("nextBtn");
+const modal = document.getElementById("modal");
+const frame = document.getElementById("frame");
+const tabs = document.querySelectorAll(".tab");
 
-// Store current modal URL
-let currentURL='';
+/* ===== TAB URL MAP ===== */
+const URLS = {
+  wordpress: "https://debeatzgh.wordpress.com/build-with-ai-2/",
+  blogger: "https://debeatzgh2.blogspot.com/",
+  slides: "https://docs.google.com/presentation/d/1F7_mDSijSndGly1Q05YqOZHI1LaSjjt7/embed",
+  forms: "https://docs.google.com/forms"
+};
 
-// Open preview function
-function openPreview(url, showNext=false){
-  previewFrame.src=url;
-  previewModal.style.display="flex";
-  currentURL=url;
-  nextBtn.style.display=showNext ? 'block' : 'none';
-}
+/* ===== HISTORY ===== */
+let historyStack = [];
+let historyIndex = -1;
 
-// Close preview
-function closePreview(){
-  previewModal.style.display="none";
-  previewFrame.src="";
-  if(document.fullscreenElement){document.exitFullscreen();}
-}
-
-// Fullscreen toggle
-function toggleFS(id){
-  const el=document.getElementById(id);
-  if(!document.fullscreenElement){el.requestFullscreen();}
-  else{document.exitFullscreen();}
-}
-
-// Next button logic
-function openNext(){
-  if(currentURL.includes('wordpress.com')){
-    openPreview('https://debeatzgh2.blogspot.com/');
+function load(url){
+  frame.src = url;
+  if(historyStack[historyIndex] !== url){
+    historyStack = historyStack.slice(0, historyIndex + 1);
+    historyStack.push(url);
+    historyIndex++;
   }
 }
 
-/* Optional: External links open in new tab */
-previewFrame.addEventListener("load", ()=>{
-  try{
-    const doc=previewFrame.contentDocument;
-    const links=doc.querySelectorAll("a[href]");
-    links.forEach(a=>{
-      const href=a.href;
-      if(!href.includes("debeatzgh.wordpress.com") &&
-         !href.includes("debeatzgh2.blogspot.com") &&
-         !href.includes("msha.ke")){
-        a.setAttribute("target","_blank");
-        a.setAttribute("rel","noopener");
-      }
-    });
-  }catch(e){
-    console.warn("Cross-domain content: external links may not be detected");
+/* ===== OPEN ===== */
+function openLauncher(tab){
+  modal.style.display="flex";
+  switchTab(tab);
+}
+
+/* ===== CLOSE ===== */
+function closeLauncher(){
+  modal.style.display="none";
+  frame.src="";
+  historyStack=[];
+  historyIndex=-1;
+  if(document.fullscreenElement) document.exitFullscreen();
+}
+
+/* ===== SWITCH TAB ===== */
+function switchTab(tab){
+  tabs.forEach(t=>t.classList.remove("active"));
+  document.querySelector(`.tab[onclick*="${tab}"]`).classList.add("active");
+  load(URLS[tab]);
+}
+
+/* ===== NAVIGATION ===== */
+function goBack(){
+  if(historyIndex>0){
+    historyIndex--;
+    frame.src = historyStack[historyIndex];
   }
-});
+}
+function goForward(){
+  if(historyIndex<historyStack.length-1){
+    historyIndex++;
+    frame.src = historyStack[historyIndex];
+  }
+}
+
+/* ===== FULLSCREEN ===== */
+function toggleFS(){
+  const el=document.getElementById("modalBox");
+  if(!document.fullscreenElement) el.requestFullscreen();
+  else document.exitFullscreen();
+}
 </script>
 
 </body>
