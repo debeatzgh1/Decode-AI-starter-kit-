@@ -140,8 +140,8 @@ const tabs = document.querySelectorAll(".tab");
 const URLS = {
   wordpress: "https://debeatzgh.wordpress.com/build-with-ai-2/",
   blogger: "https://debeatzgh2.blogspot.com/",
-  slides: "https://docs.google.com/presentation/d/1F7_mDSijSndGly1Q05YqOZHI1LaSjjt7/embed",
-  forms: "https://docs.google.com/forms"
+  sign in: "https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform?usp=header",
+  About: "https://form.jotform.com/241335470278053"
 };
 
 /* ===== HISTORY ===== */
