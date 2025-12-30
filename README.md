@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,7 +7,6 @@
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
 
 <style>
-/* ===== MODAL ===== */
 .modal-bg{
   display:none;
   position:fixed;
@@ -27,7 +25,6 @@
   flex-direction:column;
 }
 
-/* ===== TABS ===== */
 .tabs{
   display:flex;
   gap:6px;
@@ -47,7 +44,6 @@
   color:#fff;
 }
 
-/* ===== CONTROLS ===== */
 .controls{
   display:flex;
   gap:8px;
@@ -64,7 +60,6 @@
   cursor:pointer;
 }
 
-/* ===== IFRAME ===== */
 iframe{
   flex:1;
   width:100%;
@@ -111,10 +106,10 @@ iframe{
 
     <!-- TABS -->
     <div class="tabs">
-      <div class="tab active" onclick="switchTab('wordpress')">WordPress</div>
-      <div class="tab" onclick="switchTab('blogger')">Blogger</div>
-      <div class="tab" onclick="switchTab('slides')">Slides</div>
-      <div class="tab" onclick="switchTab('forms')">Forms</div>
+      <div class="tab active" data-tab="wordpress">WordPress</div>
+      <div class="tab" data-tab="blogger">Blogger</div>
+      <div class="tab" data-tab="signin">Sign In</div>
+      <div class="tab" data-tab="about">About</div>
     </div>
 
     <!-- CONTROLS -->
@@ -136,12 +131,12 @@ const modal = document.getElementById("modal");
 const frame = document.getElementById("frame");
 const tabs = document.querySelectorAll(".tab");
 
-/* ===== TAB URL MAP ===== */
+/* ===== URL MAP (FIXED) ===== */
 const URLS = {
   wordpress: "https://debeatzgh.wordpress.com/build-with-ai-2/",
   blogger: "https://debeatzgh2.blogspot.com/",
-  sign in: "https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform?usp=header",
-  About: "https://form.jotform.com/241335470278053"
+  signin: "https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform",
+  about: "https://form.jotform.com/241335470278053"
 };
 
 /* ===== HISTORY ===== */
@@ -159,35 +154,41 @@ function load(url){
 
 /* ===== OPEN ===== */
 function openLauncher(tab){
-  modal.style.display="flex";
+  modal.style.display = "flex";
   switchTab(tab);
 }
 
 /* ===== CLOSE ===== */
 function closeLauncher(){
-  modal.style.display="none";
-  frame.src="";
-  historyStack=[];
-  historyIndex=-1;
+  modal.style.display = "none";
+  frame.src = "";
+  historyStack = [];
+  historyIndex = -1;
   if(document.fullscreenElement) document.exitFullscreen();
 }
 
-/* ===== SWITCH TAB ===== */
+/* ===== SWITCH TAB (FIXED) ===== */
+tabs.forEach(tabEl => {
+  tabEl.addEventListener("click", () => {
+    switchTab(tabEl.dataset.tab);
+  });
+});
+
 function switchTab(tab){
-  tabs.forEach(t=>t.classList.remove("active"));
-  document.querySelector(`.tab[onclick*="${tab}"]`).classList.add("active");
+  tabs.forEach(t => t.classList.remove("active"));
+  document.querySelector(`.tab[data-tab="${tab}"]`).classList.add("active");
   load(URLS[tab]);
 }
 
 /* ===== NAVIGATION ===== */
 function goBack(){
-  if(historyIndex>0){
+  if(historyIndex > 0){
     historyIndex--;
     frame.src = historyStack[historyIndex];
   }
 }
 function goForward(){
-  if(historyIndex<historyStack.length-1){
+  if(historyIndex < historyStack.length - 1){
     historyIndex++;
     frame.src = historyStack[historyIndex];
   }
@@ -195,7 +196,7 @@ function goForward(){
 
 /* ===== FULLSCREEN ===== */
 function toggleFS(){
-  const el=document.getElementById("modalBox");
+  const el = document.getElementById("modalBox");
   if(!document.fullscreenElement) el.requestFullscreen();
   else document.exitFullscreen();
 }
