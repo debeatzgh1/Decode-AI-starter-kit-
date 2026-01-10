@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /* 🔘 Floating Button */
   const floatBtn = document.createElement("div");
   floatBtn.className = "floating-btn";
-  floatBtn.innerHTML = `<a href="#">☕ App</a>`;
+  floatBtn.innerHTML = `<a href="#">Blogs</a>`;
   document.body.appendChild(floatBtn);
 
   /* 🪟 Modal */
