@@ -85,7 +85,7 @@
 <body>
 
     <div class="side-nav nav-left">
-        <a href="https://debeatzgh1.github.io/Digital-Creator-s-Essential-Guides-Tools/" target="_blank" class="nav-item item-guide shake-trigger" data-label="Essential Guides">
+        <a href="https://debeatzgh1.github.io/Side-hustle-starter-kit-/" target="_blank" class="nav-item item-guide shake-trigger" data-label="Essential Guides">
             <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
         </a>
         <a href="https://debeatzgh1.github.io/The-Ultimate-Guide-to-Side-Hustle/" target="_blank" class="nav-item item-social shake-trigger" data-label="Side Hustle">
