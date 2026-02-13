@@ -1,4 +1,4 @@
-
+<!doctype html>
 
 
     <style>
@@ -135,6 +135,7 @@
     </script>
 
 </!doctype>
+
 
 
 <html lang="en">
