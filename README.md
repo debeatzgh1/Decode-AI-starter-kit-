@@ -1,5 +1,3 @@
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -222,10 +220,10 @@
 <body>
 
     <div class="side-nav nav-left">
-        <a href="https://debeatzgh1.github.io/Digital-Creator-s-Essential-Guides-Tools/" target="_blank" class="nav-item item-guide shake-trigger" data-label="Essential Guides">
+        <a href="https://debeatzgh1.github.io/Side-hustle-starter-kit-/" target="_blank" class="nav-item item-guide shake-trigger" data-label="Essential Guides">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
         </a>
-        <a href="https://t.me/your_telegram" target="_blank" class="nav-item item-social shake-trigger" data-label="Join Community">
+        <a href="https://debeatzgh1.github.io/Side-hustle-starter-kit-/" target="_blank" class="nav-item item-social shake-trigger" data-label="Join Community">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-10.4 8.38 8.38 0 0 1 3.9 1.1L21 3z"></path></svg>
         </a>
     </div>
