@@ -3,13 +3,14 @@
 <head>
     <style>
         :root {
-            --nav-bg: rgba(13, 17, 23, 0.95);
+            --nav-bg: rgba(13, 17, 23, 0.9);
             --nav-border: #30363d;
             --nav-accent: #58a6ff;
             --nav-hover: #1f6feb;
-            --glow: rgba(88, 166, 255, 0.4);
+            --glow-color: rgba(88, 166, 255, 0.5);
         }
 
+        /* Dock Container */
         .nav-dock {
             position: fixed;
             right: 20px;
@@ -20,13 +21,12 @@
             align-items: center;
             gap: 15px;
             z-index: 10000;
-            font-family: -apple-system, sans-serif;
         }
 
-        /* Launcher Button with Rotation */
+        /* Launcher (>) */
         #nav-launcher {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background: var(--nav-bg);
             border: 1px solid var(--nav-border);
             color: var(--nav-accent);
@@ -35,35 +35,33 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.4rem;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
         #nav-launcher.open {
-            transform: rotate(-180deg);
-            background: var(--nav-hover);
             color: white;
+            background: var(--nav-hover);
             border-color: var(--nav-accent);
         }
 
-        /* Nav Group Layout */
+        /* Button Group */
         .nav-group {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            visibility: hidden;
+            gap: 10px;
             pointer-events: none;
         }
 
         .nav-group.active {
-            visibility: visible;
             pointer-events: auto;
         }
 
-        /* Navigation Buttons */
         .nav-btn {
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             background: var(--nav-bg);
             border: 1px solid var(--nav-border);
             color: #c9d1d9;
@@ -72,26 +70,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
             opacity: 0;
-            transform: scale(0.4) translateX(40px);
+            transform: scale(0.5) translateX(30px);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            position: relative;
         }
 
+        /* Active/Open State for Buttons */
         .nav-group.active .nav-btn {
             opacity: 1;
             transform: scale(1) translateX(0);
         }
 
-        /* The Heartbeat Animation */
-        @keyframes heartbeat {
-            0% { box-shadow: 0 0 0 0 var(--glow); transform: scale(1); }
-            50% { box-shadow: 0 0 20px 8px var(--glow); transform: scale(1.15); }
-            100% { box-shadow: 0 0 0 0 var(--glow); transform: scale(1); }
+        /* Heartbeat Glow Animation */
+        @keyframes heartbeatGlow {
+            0% { box-shadow: 0 0 0 0 var(--glow-color); transform: scale(1); }
+            50% { box-shadow: 0 0 15px 5px var(--glow-color); transform: scale(1.1); }
+            100% { box-shadow: 0 0 0 0 var(--glow-color); transform: scale(1); }
         }
 
-        .pulse {
-            animation: heartbeat 1.2s ease-in-out;
+        .heartbeat-active {
+            animation: heartbeatGlow 1.2s ease-in-out 2; /* Runs twice on open */
         }
 
         .nav-btn:hover {
@@ -100,32 +100,30 @@
             border-color: var(--nav-accent);
         }
 
-        /* Staggered Pop-in Delays */
-        .nav-group.active .nav-btn:nth-child(1) { transition-delay: 0.05s; }
-        .nav-group.active .nav-btn:nth-child(2) { transition-delay: 0.15s; }
-        .nav-group.active .nav-btn:nth-child(3) { transition-delay: 0.25s; }
+        /* Staggered transition delays for a smooth "pop-in" effect */
+        .nav-group.active .nav-btn:nth-child(1) { transition-delay: 0.1s; }
+        .nav-group.active .nav-btn:nth-child(2) { transition-delay: 0.2s; }
+        .nav-group.active .nav-btn:nth-child(3) { transition-delay: 0.3s; }
 
-        svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+        .nav-btn svg { width: 18px; height: 18px; }
     </style>
 </head>
 <body>
 
     <div class="nav-dock">
-        <button id="nav-launcher" onclick="toggleNav()">
-            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
+        <button id="nav-launcher" onclick="toggleNav()">›</button>
 
         <div class="nav-group" id="navGroup">
-            <button class="nav-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Top">
-                <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+            <button class="nav-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
             </button>
 
-            <a href="https://debeatzgh1.github.io/Home-/" class="nav-btn" title="Home">
-                <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></a href="">
+            <a href="https://debeatzgh1.github.io/Home-/" class="nav-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             </a>
 
-            <button class="nav-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})" title="Bottom">
-                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <button class="nav-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
         </div>
     </div>
@@ -134,27 +132,29 @@
         function toggleNav() {
             const group = document.getElementById('navGroup');
             const launcher = document.getElementById('nav-launcher');
-            const btns = document.querySelectorAll('.nav-btn');
+            const buttons = document.querySelectorAll('.nav-btn');
             
-            const isOpening = !group.classList.contains('active');
-            
-            group.classList.toggle('active');
+            const isOpen = group.classList.toggle('active');
             launcher.classList.toggle('open');
+            launcher.innerText = isOpen ? '‹' : '›';
 
-            if (isOpening) {
-                btns.forEach((btn, i) => {
-                    // Remove old animation if it exists
-                    btn.classList.remove('pulse');
-                    // Force a reflow to restart animation
-                    void btn.offsetWidth; 
-                    // Add heartbeat with a slight delay per button
+            if (isOpen) {
+                // Trigger heartbeat animation on each button when opened
+                buttons.forEach((btn, index) => {
+                    // Slight delay before heartbeat starts to match the pop-in
                     setTimeout(() => {
-                        btn.classList.add('pulse');
-                    }, (i + 1) * 200);
+                        btn.classList.add('heartbeat-active');
+                    }, (index + 1) * 200);
+
+                    // Remove class after animation ends so it can re-trigger next time
+                    setTimeout(() => {
+                        btn.classList.remove('heartbeat-active');
+                    }, 3000);
                 });
             }
         }
     </script>
+
 </body>
 </html>
 
