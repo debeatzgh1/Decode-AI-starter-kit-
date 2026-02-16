@@ -1,8 +1,8 @@
-
-
-
-    
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
             --banner-bg: rgba(13, 17, 23, 0.85);
@@ -143,8 +143,8 @@
             .banner-btn { padding: 8px 12px; }
         }
     </style>
-
-
+</head>
+<body>
 
     <div class="top-floating-banner">
         <div class="carousel-wrapper">
@@ -189,8 +189,8 @@
         }
     </script>
 
-
-</!doctype>
+</body>
+</html>
 
 
 # 🚀 Decode AI Starter Kit
